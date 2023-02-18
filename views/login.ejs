@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Entertainment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="relativeBox">
+    <svg class="logoSVG" width="33" height="27" xmlns="http://www.w3.org/2000/svg"><path d="m26.463.408 3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-1.6a3.186 3.186 0 0 0-3.184 3.2l-.016 19.2a3.2 3.2 0 0 0 3.2 3.2h25.6a3.2 3.2 0 0 0 3.2-3.2V.408h-6.4Z" fill="#FC4747"/></svg>
+          <div class="card-body">
+            <h1>Login</h1>
+            <form action="/login" method="POST" id="form" novalidate>
+              <div class="form-group">
+                <div class="field">
+                  <input type="email" placeholder="Email address" name="username" id="EMAIL" required>
+                  <label id="errorEmailElement" for="EMAIL"></label>
+                </div>
+                <div class="field">
+                  <input type="password" placeholder="Password" name="password" id="PASSWORD" required>
+                  <label id="errorPasswordElement" for="PASSWORD"></label>
+                </div>
+              </div>
+              <button type="submit" class="loginButton">Login to your account</button>
+              <div class="accountTextContainer">
+                <p class="accountText">Don't have an account?</p>
+                <a class="signUpButton" href="/register">Sign Up</a>
+              </div>
+            </form>
+          </div>
+  </div>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>
