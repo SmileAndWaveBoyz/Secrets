@@ -1,5 +1,6 @@
 console.log("Script is working");
 
+//Search box
 let ejsData = document.querySelector(".ejsData").innerHTML;
 console.log(ejsData);
 
@@ -31,9 +32,10 @@ function searchFunction(listToSort) {
         }
       }
     }
-
   }
 
+
+  //Horizontal scroll buttons
   const buttonLeft = document.querySelector('.buttonLeft');
   const buttonRight = document.querySelector('.buttonRight');
 
@@ -46,3 +48,21 @@ function searchFunction(listToSort) {
     document.getElementById('container').scrollLeft -= 400;
     console.log("Left");
   };
+
+//Category icons
+console.log("ejsData" + ejsData.length);
+for (let i = 0; i < ejsData.length; i++) {
+  
+  const category = document.querySelectorAll(".category");
+  const seriesIcon = document.querySelectorAll(".seriesIcon");
+  const filmIcon = document.querySelectorAll(".filmIcon");
+
+  if (category[i].innerHTML === "Movie") {
+    seriesIcon[i].classList.toggle("invisable");
+  }
+
+  if (category[i].innerHTML === "TV Series") {
+    filmIcon[i].classList.toggle("invisable");
+}
+
+}

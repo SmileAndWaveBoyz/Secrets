@@ -338,11 +338,34 @@ textarea.error, input.error{
   min-height: 140px;
   max-width: 480px;
   max-height: 280px;
+  position: relative;
 }
 
 .scrollButton{
   display: none;
 }
+
+.titleTrending{
+  position: absolute;
+  bottom: 0px;
+  font-size: 1.5rem;
+}
+
+.year, .category, .rating, .dot, .categoryIcon{
+  display: inline;
+  font-size: 1.2rem;
+}
+
+.invisable{
+  display: none;
+}
+
+.metaContainer{
+  position: absolute;
+  bottom: 35px;
+}
+
+
 
 @media screen and (min-width: 768px) {
   .thumbnailContainer{
