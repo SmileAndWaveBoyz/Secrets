@@ -6,6 +6,7 @@
   --colour-red:rgb(252, 70, 70);
   --colour-content: rgb(22, 29, 46);
   --colour-background: rgb(16, 19, 29);
+  --colour-grey: rgb(90, 105, 143);
 }
 
 html{
@@ -291,6 +292,10 @@ textarea.error, input.error{
   padding: 0 1.6rem;
 }
 
+.thumb{
+  position: relative;
+}
+
 .thumbnailContainer.Trending{
   display: grid;
   grid-auto-flow: column;
@@ -355,6 +360,7 @@ textarea.error, input.error{
 .year, .category, .rating, .dot, .categoryIcon{
   display: inline;
   font-size: 1.2rem;
+  color: rgb(255, 255, 255, 0.8)
 }
 
 .invisable{
@@ -366,6 +372,18 @@ textarea.error, input.error{
   bottom: 35px;
 }
 
+.title.titleNotTrending{
+  font-size: 1.4rem;
+  transform: translate(0, 12px);
+}
+
+.metaNotTrending{
+  font-size: 1.1rem;
+}
+
+.metaContainerNotTrending{
+  bottom: 18px;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -415,6 +433,19 @@ textarea.error, input.error{
     bottom: 50px;
   }
 
+  .title.titleNotTrending{
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+  
+  .metaNotTrending{
+    font-size: 1.3rem;
+  }
+  
+  .metaContainerNotTrending{
+    bottom: 44px;
+  }
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -462,6 +493,10 @@ textarea.error, input.error{
     bottom: 50px;
   }
 
+  .metaContainer.metaContainerNotTrending{
+    bottom: 30px;
+  }
+
   .scrollButton{
     display: block;
     position: absolute;
@@ -487,6 +522,15 @@ textarea.error, input.error{
 
   .buttonRight{
     right: 30px
+  }
+
+  .title.titleNotTrending{
+    margin-bottom: 3.7rem;
+  }
+  
+  
+  .metaContainer.metaContainerNotTrending{
+    bottom: 49px;
   }
 
 }
