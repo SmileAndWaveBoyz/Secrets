@@ -538,3 +538,50 @@ textarea.error, input.error{
 .ejsData{
   display: none;
 }
+
+
+/* Play button and hover */
+.playButtonTrending{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(236, 236, 236, 0.35);
+  outline: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 1.8rem;
+  min-width: 110px;
+  border-radius: 30px;
+  padding: 1.1rem 1.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: none;
+}
+
+.desktopScreenShot:hover .playButtonTrending{
+  display: flex;
+}
+
+.darkBackGround{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  border-radius: 9px;
+  background-color: rgb(0, 0, 0, 0);
+  transition: all 0.2s;
+}
+
+.desktopScreenShot:hover .darkBackGround{
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.playButtonTrending:hover{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
