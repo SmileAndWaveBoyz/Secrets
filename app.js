@@ -1,6 +1,8 @@
-let json = require('./public/data.json');
-console.log(json, 'the json obj');
 
+const fs = require("fs");
+let json =[];
+
+// let json = require('./public/data.json');
 
 require('dotenv').config();
 const express = require("express");
@@ -30,6 +32,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Setting up the users data base inside userDB
 mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
 mongoose.set("useCreateIndex", true);
 
@@ -44,6 +47,37 @@ userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = new mongoose.model("User", userSchema);
+
+//Setting up the paths data base inside userDB
+const trendingSchema = new mongoose.Schema ({
+  small: String,
+  large: String
+});
+
+const regularSchema = new mongoose.Schema ({
+  small: String,
+  medium: String,
+  large: String
+});
+
+const thumbnailSchema = new mongoose.Schema ({
+  trending: trendingSchema,
+  regular: regularSchema
+});
+
+const pathSchema = new mongoose.Schema ({
+  title: String,
+  thumbnail: thumbnailSchema,
+  year: Number,
+  category: String,
+  rating: String,
+  isBookmarked: Boolean,
+  isTrending: Boolean
+});
+
+const Path = new mongoose.model("Path", pathSchema);
+
+
 
 passport.use(User.createStrategy());
 
@@ -71,6 +105,21 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
+
+//Read the JSON file
+fs.readFile('./public/data.json', "utf-8", function (err, jsonString) {
+  if (err) {
+    console.log(err);
+  } else {
+    try {
+      json = JSON.parse(jsonString);
+      console.log("JSON read OK");
+    } catch (err) {
+      console.log("Error parsing JSON ", err);
+    }
+
+  }
+});
 
 app.get("/", function(req, res){
   res.render("login");
@@ -115,33 +164,6 @@ app.get("/register", function(req, res){
 //   });
 // });
 
-app.get("/submit", function(req, res){
-  if (req.isAuthenticated()){
-    res.render("submit");
-  } else {
-    res.redirect("/login");
-  }
-});
-
-app.post("/submit", function(req, res){
-  const submittedSecret = req.body.secret;
-
-//Once the user is authenticated and their session gets saved, their user details are saved to req.user.
-  // console.log(req.user.id);
-
-  User.findById(req.user.id, function(err, foundUser){
-    if (err) {
-      console.log(err);
-    } else {
-      if (foundUser) {
-        foundUser.secret = submittedSecret;
-        foundUser.save(function(){
-          res.redirect("/secrets");
-        });
-      }
-    }
-  });
-});
 
 app.get("/logout", function(req, res){
   req.logout();
@@ -156,13 +178,21 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
-        // res.redirect("/secrets");
         User.find({"secret": {$ne: null}}, function(err, foundUsers){
           if (err){
             console.log(err);
           } else {
             if (foundUsers) {
-              res.render("index", {json: json});
+
+              Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+                if(err){
+                    console.log(err);
+                } else{ // Or you could just show every thing by just console logging paths without the forEach
+                    console.log(paths);
+                    res.render("index", {json: paths});
+                   // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                }
+              });
             }
           }
         });
@@ -190,13 +220,81 @@ app.post("/login", function(req, res){
             console.log(err);
           } else {
             if (foundUsers) {
-              res.render("index", {json: json});
+
+              Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+                if(err){
+                    console.log(err);
+                } else{ // Or you could just show every thing by just console logging paths without the forEach
+                    console.log(paths);
+                    res.render("index", {json: paths});
+                   // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                }
+              });
             }
           }
         });
       });
     }
   });
+
+});
+
+app.post("/bookmarkButton", function(req, res){
+  const bookMarkValue = req.body.bookmarkButton;
+  console.log(bookMarkValue);
+
+  Path.findOne({title: bookMarkValue}, function(err, path){
+    if(err){
+        console.log(err);
+    } else{ 
+        console.log("Found: " + path.isBookmarked);
+
+        if (path.isBookmarked === true) {
+
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      // console.log(paths);
+                      res.render("index", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+          
+        } else {
+
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      // console.log(paths);
+                      res.render("index", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+
+        }
+    }
+  });
+
+
+
 
 });
 
