@@ -325,7 +325,7 @@ textarea.error, input.error{
   aspect-ratio: 16/10;
   max-width: 328px;
   max-height: 220px;
-  padding: 3rem 1.8rem;
+  
 }
 
 .screenShot.tabletScreenShot, .screenShot.desktopScreenShot{
@@ -339,6 +339,7 @@ textarea.error, input.error{
   max-width: 480px;
   max-height: 280px;
   position: relative;
+  padding: 3rem 1.8rem;
 }
 
 .scrollButton{
@@ -394,11 +395,26 @@ textarea.error, input.error{
     /* min-height: 140px; */
     max-width: 960px;
     max-height: 460px;
+    padding: 3rem 2.4rem;
   }
 
   .screenShot.mobileScreenShot, .screenShot.desktopScreenShot{
     display: none;
   }
+
+  .titleTrending{
+    font-size: 2.4rem;
+    font-weight: normal;
+  }
+  
+  .year, .category, .rating, .dot, .categoryIcon{
+    font-size: 1.5rem;
+  }
+
+  .metaContainer{
+    bottom: 50px;
+  }
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -439,11 +455,17 @@ textarea.error, input.error{
     /* aspect-ratio: 235/115; */
     max-width: 960px;
     max-height: 460px;
+    padding: 3rem 2.5rem;
+  }
+
+  .metaContainer{
+    bottom: 50px;
   }
 
   .scrollButton{
     display: block;
     position: absolute;
+    z-index: 1;
     margin: 175px 0;
     transform: translate(0, -50%);
     background-color: rgb(255, 255, 255, 0.0);
