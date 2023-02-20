@@ -52,18 +52,18 @@
       <% if(json[i].isBookmarked == true){ %>
         <div class="thumb">
             <div class="screenShot mobileScreenShot" style="background: url(<%= json[i].thumbnail.regular.small%>); background-size: cover;">
-              <form class="bookmarkButtonForm" action="/bookmarkButton" method="post">
+              <form class="bookmarkButtonForm" action="/bookmarkBookmarked" method="post">
                 <button name="bookmarkButton" class="<%=json[i].isBookmarked%> bookmarkButton" value="<%=json[i].title%>"></button>
               </form>
             </div>
             <div class="screenShot tabletScreenShot" style="background: url(<%= json[i].thumbnail.regular.medium%>); background-size: cover;">
-              <form class="bookmarkButtonForm" action="/bookmarkButton" method="post">
+              <form class="bookmarkButtonForm" action="/bookmarkBookmarked" method="post">
                 <button name="bookmarkButton" class="<%=json[i].isBookmarked%> bookmarkButton" value="<%=json[i].title%>"></button>
               </form>
             </div>
             <div class="screenShot desktopScreenShot" style="background: url(<%= json[i].thumbnail.regular.large%>); background-size: cover;">
               <div class="darkBackGround"></div>
-              <form class="bookmarkButtonForm" action="/bookmarkButton" method="post">
+              <form class="bookmarkButtonForm" action="/bookmarkBookmarked" method="post">
                 <button name="bookmarkButton" class="<%=json[i].isBookmarked%> bookmarkButton" value="<%=json[i].title%>"></button>
               </form>
               <button class="playButton"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z" fill="#FFF"/></svg>Play</button>

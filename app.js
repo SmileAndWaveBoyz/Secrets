@@ -260,7 +260,6 @@ app.post("/bookmarkButton", function(req, res){
                   if(err){
                       console.log(err);
                   } else{ 
-                      // console.log(paths);
                       res.render("index", {json: paths});
                      // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                   }
@@ -269,7 +268,6 @@ app.post("/bookmarkButton", function(req, res){
           });
           
         } else {
-
           Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
             if(err){
                 console.log(err);
@@ -287,12 +285,167 @@ app.post("/bookmarkButton", function(req, res){
                 });
             }
           });
-
         }
     }
   });
-
 });
+
+app.post("/bookmarkButtonMovies", function(req, res){
+  const bookMarkValue = req.body.bookmarkButton;
+  console.log(bookMarkValue);
+
+  Path.findOne({title: bookMarkValue}, function(err, path){
+    if(err){
+        console.log(err);
+    } else{ 
+        console.log("Found: " + path.isBookmarked);
+
+        if (path.isBookmarked === true) {
+
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      res.render("movies", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+          
+        } else {
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      // console.log(paths);
+                      res.render("movies", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+        }
+    }
+  });
+});
+
+app.post("/bookmarkTV", function(req, res){
+  const bookMarkValue = req.body.bookmarkButton;
+  console.log(bookMarkValue);
+
+  Path.findOne({title: bookMarkValue}, function(err, path){
+    if(err){
+        console.log(err);
+    } else{ 
+        console.log("Found: " + path.isBookmarked);
+
+        if (path.isBookmarked === true) {
+
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      res.render("tv", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+          
+        } else {
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      // console.log(paths);
+                      res.render("tv", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+        }
+    }
+  });
+});
+
+app.post("/bookmarkBookmarked", function(req, res){
+  const bookMarkValue = req.body.bookmarkButton;
+  console.log(bookMarkValue);
+
+  Path.findOne({title: bookMarkValue}, function(err, path){
+    if(err){
+        console.log(err);
+    } else{ 
+        console.log("Found: " + path.isBookmarked);
+
+        if (path.isBookmarked === true) {
+
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      res.render("bookmarked", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+          
+        } else {
+          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+            if(err){
+                console.log(err);
+            } else{
+                console.log("Successfully updated the document.");
+
+                Path.find(function(err, paths){
+                  if(err){
+                      console.log(err);
+                  } else{ 
+                      // console.log(paths);
+                      res.render("bookmarked", {json: paths});
+                     // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+                  }
+                });
+            }
+          });
+        }
+    }
+  });
+});
+
 
 app.post("/index", function(req, res){
   Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
