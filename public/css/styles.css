@@ -167,8 +167,13 @@ textarea.error, input.error{
 }
 
 .navIcon{
-  margin: 0 1rem;
-  transform: scale(0.4);
+  margin: 0 0.2rem;
+  transform: scale(0.9);
+  background-color: rgb(1, 1, 1, 0);
+  display: inline;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
 }
 
 .avatar{
@@ -207,6 +212,11 @@ textarea.error, input.error{
   .logSVG{
     transform: scale(1);
   }
+
+  .navIcon{
+    margin: 0 2.2rem;
+    transform: scale(1);
+  }
   
   .navIconSVG{
     transform: scale(1);
@@ -232,8 +242,8 @@ textarea.error, input.error{
   }
 
   .navIcon{
-    display: inline;
-    margin: 4rem 0rem;
+    margin: 2.8rem 0rem;
+    transform: scale(0.4);
   }
 
   .logo{
@@ -394,7 +404,7 @@ textarea.error, input.error{
   }
   
   .searchBox{
-    margin-bottom: 4.8rem;
+    margin-bottom: 4rem;
   }
 
   .trendingHeading{

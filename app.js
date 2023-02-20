@@ -203,7 +203,6 @@ app.post("/register", function(req, res){
 });
 
 app.post("/login", function(req, res){
-
   const user = new User({
     username: req.body.username,
     password: req.body.password
@@ -293,9 +292,54 @@ app.post("/bookmarkButton", function(req, res){
     }
   });
 
+});
 
+app.post("/index", function(req, res){
+  Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+    if(err){
+        console.log(err);
+    } else{ // Or you could just show every thing by just console logging paths without the forEach
+        console.log(paths);
+        res.render("index", {json: paths});
+       // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+    }
+  });
+});
 
+app.post("/movies", function(req, res){
+  Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+    if(err){
+        console.log(err);
+    } else{ // Or you could just show every thing by just console logging paths without the forEach
+        console.log(paths);
+        res.render("movies", {json: paths});
+       // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+    }
+  });
+});
 
+app.post("/tv", function(req, res){
+  Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+    if(err){
+        console.log(err);
+    } else{ // Or you could just show every thing by just console logging paths without the forEach
+        console.log(paths);
+        res.render("tv", {json: paths});
+       // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+    }
+  });
+});
+
+app.post("/bookmarked", function(req, res){
+  Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+    if(err){
+        console.log(err);
+    } else{ // Or you could just show every thing by just console logging paths without the forEach
+        console.log(paths);
+        res.render("bookmarked", {json: paths});
+       // mongoose.connection.close(); // It's good practice  to close the database when you're done 
+    }
+  });
 });
 
 
