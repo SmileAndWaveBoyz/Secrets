@@ -166,6 +166,11 @@ textarea.error, input.error{
   margin-bottom: 2.7rem;
 }
 
+  .buttonContainer{
+    display: flex;
+    flex-direction: row;
+  }
+
 .navIcon{
   margin: 0 0.2rem;
   transform: scale(0.9);
@@ -237,7 +242,6 @@ textarea.error, input.error{
   }
 
   .buttonContainer{
-    display: flex;
     flex-direction: column;
   }
 
