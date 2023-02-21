@@ -2,7 +2,7 @@ console.log("Script is working");
 
 //Search box
 let ejsData = document.querySelector(".ejsData").innerHTML;
-console.log(ejsData);
+// console.log(ejsData);
 
 let searchInput = document.querySelector(".searchInput");
 let thumb = document.querySelector(".thumb");
@@ -38,16 +38,36 @@ function searchFunction(listToSort) {
   //Horizontal scroll buttons
   const buttonLeft = document.querySelector('.buttonLeft');
   const buttonRight = document.querySelector('.buttonRight');
+  const container = document.getElementById('container');
+
+  container.addEventListener("scroll", function () {
+    if (container.scrollLeft == 0.800000011920929) {
+      buttonLeft.classList.add("invisable");
+    } else {
+      buttonLeft.classList.remove("invisable");
+    }
+
+    if (container.scrollLeft == 2324) {
+      buttonRight.classList.add("invisable");
+    } else {
+      buttonRight.classList.remove("invisable");
+    }
+  });
+
+  if (container.scrollLeft == 0.800000011920929) {
+    buttonLeft.classList.add("invisable");
+  } else {
+    buttonLeft.classList.remove("invisable");
+  }
 
   buttonRight.onclick = function () {
-    document.getElementById('container').scrollLeft += 400;
-    console.log("Right");
+    container.scrollLeft += 400;
   };
 
   buttonLeft.onclick = function () {
-    document.getElementById('container').scrollLeft -= 400;
-    console.log("Left");
+    container.scrollLeft -= 400;
   };
+
 
 //Category icons
 console.log("ejsData" + ejsData.length);

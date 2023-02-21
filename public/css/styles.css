@@ -382,6 +382,10 @@ textarea.error, input.error{
   display: none;
 }
 
+.scrollButton.invisable{
+  display: none;
+}
+
 .metaContainer{
   position: absolute;
   bottom: 35px;
