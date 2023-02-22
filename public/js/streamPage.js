@@ -47,7 +47,7 @@ function searchFunction(listToSort) {
       buttonLeft.classList.remove("invisable");
     }
 
-    if (container.scrollLeft == 2324) {
+    if (container.scrollLeft == (container.scrollWidth - container.clientWidth)) {
       buttonRight.classList.add("invisable");
     } else {
       buttonRight.classList.remove("invisable");
@@ -67,6 +67,7 @@ function searchFunction(listToSort) {
   buttonLeft.onclick = function () {
     container.scrollLeft -= 400;
   };
+
 
 
 //Category icons
