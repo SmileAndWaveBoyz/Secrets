@@ -47,7 +47,7 @@ function searchFunction(listToSort) {
       buttonLeft.classList.remove("invisable");
     }
 
-    if (container.scrollLeft == (container.scrollWidth - container.clientWidth)) {
+    if (Math.ceil(container.scrollLeft) == Math.ceil((container.scrollWidth - container.clientWidth))) {
       buttonRight.classList.add("invisable");
     } else {
       buttonRight.classList.remove("invisable");
