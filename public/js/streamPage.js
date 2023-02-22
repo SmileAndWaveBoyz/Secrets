@@ -41,7 +41,7 @@ function searchFunction(listToSort) {
   const container = document.getElementById('container');
 
   container.addEventListener("scroll", function () {
-    if (container.scrollLeft == 0.800000011920929) {
+    if (container.scrollLeft <= 1) {
       buttonLeft.classList.add("invisable");
     } else {
       buttonLeft.classList.remove("invisable");
@@ -54,7 +54,7 @@ function searchFunction(listToSort) {
     }
   });
 
-  if (container.scrollLeft == 0.800000011920929) {
+  if (container.scrollLeft <= 1) {
     buttonLeft.classList.add("invisable");
   } else {
     buttonLeft.classList.remove("invisable");
