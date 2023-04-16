@@ -1,12 +1,11 @@
-
 const fs = require("fs");
 let json =[];
-
 // let json = require('./public/data.json');
-
 require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
+
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const session = require('express-session');
@@ -19,6 +18,7 @@ const app = express();
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -33,8 +33,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Setting up the users data base inside userDB
-// mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
-mongoose.connect("mongodb+srv://SmileAndWaveBoyz:Newcross971@cluster0.o6lompz.mongodb.net/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://SmileAndWaveBoyz:Newcross971@cluster0.o6lompz.mongodb.net/userDB", {useNewUrlParser: true});
 
 mongoose.set("useCreateIndex", true);
 
@@ -118,12 +118,17 @@ fs.readFile('./public/data.json', "utf-8", function (err, jsonString) {
     } catch (err) {
       console.log("Error parsing JSON ", err);
     }
-
   }
 });
 
 app.get("/", function(req, res){
   res.render("login");
+  // res.render("ajax", {quote: "AJAX is great!"});
+});
+
+app.post("/test", function (req, res) {
+  console.log(req.body);
+  res.send({response: req.body.quote});
 });
 
 app.get("/auth/google",
@@ -223,9 +228,7 @@ app.post("/login", function(req, res){
 
               Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
                 if(err){
-                    console.log(err);
                 } else{ // Or you could just show every thing by just console logging paths without the forEach
-                    console.log(paths);
                     res.render("index", {json: paths});
                    // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                 }
@@ -240,8 +243,10 @@ app.post("/login", function(req, res){
 });
 
 app.post("/bookmarkButton", function(req, res){
-  const bookMarkValue = req.body.bookmarkButton;
-  console.log(bookMarkValue);
+  console.log("bookmarkButton");
+  console.log(req.body);
+  res.send({response: req.body.bookmarkButtonValue});
+  const bookMarkValue = req.body.bookmarkButtonValue;
 
   Path.findOne({title: bookMarkValue}, function(err, path){
     if(err){
@@ -495,7 +500,6 @@ app.post("/bookmarked", function(req, res){
     }
   });
 });
-
 
 app.listen(3000, function() {
   console.log("Server started on port 3000.");
