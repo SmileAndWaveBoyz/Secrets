@@ -179,7 +179,8 @@ app.get("/logout", function(req, res){
 });
 
 app.post("/register", function(req, res){
-  userNameLogin = req.body.userName;
+  userNameLogin = req.body.username;
+  console.log("User name login is " + userNameLogin);
 
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
@@ -222,11 +223,6 @@ app.post("/register", function(req, res){
                 if(err){
                     console.log(err);
                 } else{ 
-                    const userPaths = paths.filter((selection) => {
-                      return selection.userName == req.body.username;
-                    });  
-                    console.log("here comes the userPaths const");
-                    console.log(userPaths);
                     Path.find({userName: userNameLogin}, function (err, foundPaths) {;
                       res.render("index", {json: foundPaths});
                     });
@@ -288,7 +284,7 @@ app.post("/bookmarkButton", function(req, res){
   res.send({response: req.body.bookmarkButtonValue});
   const bookMarkValue = req.body.bookmarkButtonValue;
 
-  Path.findOne({title: bookMarkValue}, function(err, path){
+  Path.findOne({title: bookMarkValue, userName: userNameLogin}, function(err, path){
     if(err){
         console.log(err);
     } else{ 
@@ -296,7 +292,7 @@ app.post("/bookmarkButton", function(req, res){
 
         if (path.isBookmarked === true) {
 
-          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+          Path.updateOne({title: bookMarkValue, userName: userNameLogin}, {isBookmarked: false}, function(err){
             if(err){
                 console.log(err);
             } else{
@@ -316,7 +312,7 @@ app.post("/bookmarkButton", function(req, res){
           });
           
         } else {
-          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+          Path.updateOne({title: bookMarkValue, userName: userNameLogin}, {isBookmarked: true}, function(err){
             if(err){
                 console.log(err);
             } else{
@@ -344,7 +340,7 @@ app.post("/bookmarkBookmarked", function(req, res){
   const bookMarkValue = req.body.bookmarkButton;
   console.log(bookMarkValue);
 
-  Path.findOne({title: bookMarkValue}, function(err, path){
+  Path.findOne({title: bookMarkValue, userName: userNameLogin}, function(err, path){
     if(err){
         console.log(err);
     } else{ 
@@ -352,7 +348,7 @@ app.post("/bookmarkBookmarked", function(req, res){
 
         if (path.isBookmarked === true) {
 
-          Path.updateOne({title: bookMarkValue}, {isBookmarked: false}, function(err){
+          Path.updateOne({title: bookMarkValue, userName: userNameLogin}, {isBookmarked: false}, function(err){
             if(err){
                 console.log(err);
             } else{
@@ -372,7 +368,7 @@ app.post("/bookmarkBookmarked", function(req, res){
           });
           
         } else {
-          Path.updateOne({title: bookMarkValue}, {isBookmarked: true}, function(err){
+          Path.updateOne({title: bookMarkValue, userName: userNameLogin}, {isBookmarked: true}, function(err){
             if(err){
                 console.log(err);
             } else{
