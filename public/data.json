@@ -97,6 +97,10 @@
   {
     "title": "The Great Lands",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/the-great-lands/regular/small.jpg",
         "medium": "./assets/thumbnails/the-great-lands/regular/medium.jpg",
@@ -112,6 +116,10 @@
   {
     "title": "The Diary",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/the-diary/regular/small.jpg",
         "medium": "./assets/thumbnails/the-diary/regular/medium.jpg",
@@ -127,6 +135,10 @@
   {
     "title": "Earth’s Untouched",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/earths-untouched/regular/small.jpg",
         "medium": "./assets/thumbnails/earths-untouched/regular/medium.jpg",
@@ -142,6 +154,10 @@
   {
     "title": "No Land Beyond",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/no-land-beyond/regular/small.jpg",
         "medium": "./assets/thumbnails/no-land-beyond/regular/medium.jpg",
@@ -157,6 +173,10 @@
   {
     "title": "During the Hunt",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/during-the-hunt/regular/small.jpg",
         "medium": "./assets/thumbnails/during-the-hunt/regular/medium.jpg",
@@ -172,6 +192,10 @@
   {
     "title": "Autosport the Series",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/autosport-the-series/regular/small.jpg",
         "medium": "./assets/thumbnails/autosport-the-series/regular/medium.jpg",
@@ -187,6 +211,10 @@
   {
     "title": "Same Answer II",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/same-answer-2/regular/small.jpg",
         "medium": "./assets/thumbnails/same-answer-2/regular/medium.jpg",
@@ -202,6 +230,10 @@
   {
     "title": "Below Echo",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/below-echo/regular/small.jpg",
         "medium": "./assets/thumbnails/below-echo/regular/medium.jpg",
@@ -217,6 +249,10 @@
   {
     "title": "The Rockies",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/the-rockies/regular/small.jpg",
         "medium": "./assets/thumbnails/the-rockies/regular/medium.jpg",
@@ -232,6 +268,10 @@
   {
     "title": "Relentless",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/relentless/regular/small.jpg",
         "medium": "./assets/thumbnails/relentless/regular/medium.jpg",
@@ -247,6 +287,10 @@
   {
     "title": "Community of Ours",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/community-of-ours/regular/small.jpg",
         "medium": "./assets/thumbnails/community-of-ours/regular/medium.jpg",
@@ -262,6 +306,10 @@
   {
     "title": "Van Life",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/van-life/regular/small.jpg",
         "medium": "./assets/thumbnails/van-life/regular/medium.jpg",
@@ -277,6 +325,10 @@
   {
     "title": "The Heiress",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/the-heiress/regular/small.jpg",
         "medium": "./assets/thumbnails/the-heiress/regular/medium.jpg",
@@ -292,6 +344,10 @@
   {
     "title": "Off the Track",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/off-the-track/regular/small.jpg",
         "medium": "./assets/thumbnails/off-the-track/regular/medium.jpg",
@@ -307,6 +363,10 @@
   {
     "title": "Whispering Hill",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/whispering-hill/regular/small.jpg",
         "medium": "./assets/thumbnails/whispering-hill/regular/medium.jpg",
@@ -322,6 +382,10 @@
   {
     "title": "112",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/112/regular/small.jpg",
         "medium": "./assets/thumbnails/112/regular/medium.jpg",
@@ -337,6 +401,10 @@
   {
     "title": "Lone Heart",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/lone-heart/regular/small.jpg",
         "medium": "./assets/thumbnails/lone-heart/regular/medium.jpg",
@@ -352,6 +420,10 @@
   {
     "title": "Production Line",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/production-line/regular/small.jpg",
         "medium": "./assets/thumbnails/production-line/regular/medium.jpg",
@@ -367,6 +439,10 @@
   {
     "title": "Dogs",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/dogs/regular/small.jpg",
         "medium": "./assets/thumbnails/dogs/regular/medium.jpg",
@@ -382,6 +458,10 @@
   {
     "title": "Asia in 24 Days",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/asia-in-24-days/regular/small.jpg",
         "medium": "./assets/thumbnails/asia-in-24-days/regular/medium.jpg",
@@ -397,6 +477,10 @@
   {
     "title": "The Tasty Tour",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/the-tasty-tour/regular/small.jpg",
         "medium": "./assets/thumbnails/the-tasty-tour/regular/medium.jpg",
@@ -412,6 +496,10 @@
   {
     "title": "Darker",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/darker/regular/small.jpg",
         "medium": "./assets/thumbnails/darker/regular/medium.jpg",
@@ -427,6 +515,10 @@
   {
     "title": "Unresolved Cases",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/unresolved-cases/regular/small.jpg",
         "medium": "./assets/thumbnails/unresolved-cases/regular/medium.jpg",
@@ -442,6 +534,10 @@
   {
     "title": "Mission: Saturn",
     "thumbnail": {
+      "trending": {
+        "small": "./assets/thumbnails/dark-side-of-the-moon/trending/small.jpg",
+        "large": "./assets/thumbnails/dark-side-of-the-moon/trending/large.jpg"
+      },
       "regular": {
         "small": "./assets/thumbnails/mission-saturn/regular/small.jpg",
         "medium": "./assets/thumbnails/mission-saturn/regular/medium.jpg",

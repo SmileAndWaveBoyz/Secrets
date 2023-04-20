@@ -1,5 +1,5 @@
 const fs = require("fs");
-let json =[];
+let jsonFile =[];
 // let json = require('./public/data.json');
 require('dotenv').config();
 
@@ -13,6 +13,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
+const { log } = require("console");
 
 const app = express();
 
@@ -29,6 +30,8 @@ app.use(session({
   saveUninitialized: false
 }));
 
+var userNameLogin = "";
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,18 +40,6 @@ mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
 // mongoose.connect("mongodb+srv://SmileAndWaveBoyz:Newcross971@cluster0.o6lompz.mongodb.net/userDB", {useNewUrlParser: true});
 
 mongoose.set("useCreateIndex", true);
-
-const userSchema = new mongoose.Schema ({
-  email: String,
-  password: String,
-  googleId: String,
-  secret: String
-});
-
-userSchema.plugin(passportLocalMongoose);
-userSchema.plugin(findOrCreate);
-
-const User = new mongoose.model("User", userSchema);
 
 //Setting up the paths data base inside userDB
 const trendingSchema = new mongoose.Schema ({
@@ -74,9 +65,20 @@ const pathSchema = new mongoose.Schema ({
   category: String,
   rating: String,
   isBookmarked: Boolean,
-  isTrending: Boolean
+  isTrending: Boolean,
+  userName: String
 });
 
+const userSchema = new mongoose.Schema ({
+  email: String,
+  password: String,
+  googleId: String
+});
+
+userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(findOrCreate);
+
+const User = new mongoose.model("User", userSchema);
 const Path = new mongoose.model("Path", pathSchema);
 
 
@@ -113,7 +115,7 @@ fs.readFile('./public/data.json', "utf-8", function (err, jsonString) {
     console.log(err);
   } else {
     try {
-      json = JSON.parse(jsonString);
+      jsonFile = JSON.parse(jsonString);
       console.log("JSON read OK");
     } catch (err) {
       console.log("Error parsing JSON ", err);
@@ -121,7 +123,7 @@ fs.readFile('./public/data.json', "utf-8", function (err, jsonString) {
   }
 });
 
-app.get("/", function(req, res){
+app.get("/", function(req, res){ 
   res.render("login");
   // res.render("ajax", {quote: "AJAX is great!"});
 });
@@ -144,7 +146,7 @@ app.get("/auth/google/secrets",
         console.log(err);
       } else {
         if (foundUsers) {
-          res.render("index", {usersWithSecrets: foundUsers});
+          res.render("index", {usersWithSecrets: foundUsers});    
         }
       }
     });
@@ -155,7 +157,7 @@ app.get("/login", function(req, res){
 });
 
 app.get("/register", function(req, res){
-  res.render("register");
+ res.render("register");
 });
 
 // app.get("/secrets", function(req, res){
@@ -177,6 +179,7 @@ app.get("/logout", function(req, res){
 });
 
 app.post("/register", function(req, res){
+  userNameLogin = req.body.userName;
 
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if (err) {
@@ -184,18 +187,49 @@ app.post("/register", function(req, res){
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function(){
+
+        for (let i = 0; i < jsonFile.length; i++) {
+          const newUserPath = new Path({
+            title: jsonFile[i].title,
+            thumbnail: {
+              trending: {
+                small: jsonFile[i].thumbnail.trending.small,
+                large: jsonFile[i].thumbnail.trending.large,
+              },
+              regular: {
+                small: jsonFile[i].thumbnail.regular.small,
+                medium: jsonFile[i].thumbnail.regular.medium,
+                large: jsonFile[i].thumbnail.regular.large
+              }
+            },
+            year: jsonFile[i].year,
+            category: jsonFile[i].category,
+            rating: jsonFile[i].rating,
+            isBookmarked: jsonFile[i].isBookmarked,
+            isTrending: jsonFile[i].isTrending,
+            userName: req.body.username
+          });
+          newUserPath.save();
+          // console.log(jsonFile[i].title);
+        }
+
         User.find({"secret": {$ne: null}}, function(err, foundUsers){
           if (err){
             console.log(err);
           } else {
             if (foundUsers) {
-
-              Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
+              Path.find(function(err, paths){ 
                 if(err){
                     console.log(err);
-                } else{ // Or you could just show every thing by just console logging paths without the forEach
-                    console.log(paths);
-                    res.render("index", {json: paths});
+                } else{ 
+                    const userPaths = paths.filter((selection) => {
+                      return selection.userName == req.body.username;
+                    });  
+                    console.log("here comes the userPaths const");
+                    console.log(userPaths);
+                    Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                      res.render("index", {json: foundPaths});
+                    });
                    // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                 }
               });
@@ -206,9 +240,12 @@ app.post("/register", function(req, res){
     }
   });
 
+
 });
 
 app.post("/login", function(req, res){
+  userNameLogin = req.body.username;
+
   const user = new User({
     username: req.body.username,
     password: req.body.password
@@ -229,7 +266,10 @@ app.post("/login", function(req, res){
               Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
                 if(err){
                 } else{ // Or you could just show every thing by just console logging paths without the forEach
-                    res.render("index", {json: paths});
+
+                  Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                    res.render("index", {json: foundPaths});
+                  });
                    // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                 }
               });
@@ -266,7 +306,9 @@ app.post("/bookmarkButton", function(req, res){
                   if(err){
                       console.log(err);
                   } else{ 
-                      res.render("index", {json: paths});
+                    Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                      res.render("index", {json: foundPaths});
+                    });
                      // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                   }
                 });
@@ -285,7 +327,9 @@ app.post("/bookmarkButton", function(req, res){
                       console.log(err);
                   } else{ 
                       // console.log(paths);
-                      res.render("index", {json: paths});
+                      Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                        res.render("index", {json: foundPaths});
+                      });
                      // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                   }
                 });
@@ -318,7 +362,9 @@ app.post("/bookmarkBookmarked", function(req, res){
                   if(err){
                       console.log(err);
                   } else{ 
-                      res.render("bookmarked", {json: paths});
+                    Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                      res.render("bookmarked", {json: foundPaths});
+                    });
                      // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                   }
                 });
@@ -337,7 +383,9 @@ app.post("/bookmarkBookmarked", function(req, res){
                       console.log(err);
                   } else{ 
                       // console.log(paths);
-                      res.render("bookmarked", {json: paths});
+                      Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                        res.render("bookmarked", {json: foundPaths});
+                      });
                      // mongoose.connection.close(); // It's good practice  to close the database when you're done 
                   }
                 });
@@ -348,14 +396,15 @@ app.post("/bookmarkBookmarked", function(req, res){
   });
 });
 
-
 app.post("/index", function(req, res){
   Path.find(function(err, paths){ // This console logs the name of all the paths in the database 
     if(err){
         console.log(err);
     } else{ // Or you could just show every thing by just console logging paths without the forEach
-        console.log(paths);
-        res.render("index", {json: paths});
+        // console.log(paths);
+        Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+          res.render("index", {json: foundPaths});
+        });
        // mongoose.connection.close(); // It's good practice  to close the database when you're done 
     }
   });
@@ -366,8 +415,10 @@ app.post("/movies", function(req, res){
     if(err){
         console.log(err);
     } else{ // Or you could just show every thing by just console logging paths without the forEach
-        console.log(paths);
-        res.render("movies", {json: paths});
+        // console.log(paths);
+        Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+          res.render("movies", {json: foundPaths});
+        });
        // mongoose.connection.close(); // It's good practice  to close the database when you're done 
     }
   });
@@ -378,8 +429,10 @@ app.post("/tv", function(req, res){
     if(err){
         console.log(err);
     } else{ // Or you could just show every thing by just console logging paths without the forEach
-        console.log(paths);
-        res.render("tv", {json: paths});
+        // console.log(paths);
+        Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+          res.render("tv", {json: foundPaths});
+        });
        // mongoose.connection.close(); // It's good practice  to close the database when you're done 
     }
   });
@@ -390,8 +443,10 @@ app.post("/bookmarked", function(req, res){
     if(err){
         console.log(err);
     } else{ // Or you could just show every thing by just console logging paths without the forEach
-        console.log(paths);
-        res.render("bookmarked", {json: paths});
+        // console.log(paths);
+        Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+          res.render("bookmarked", {json: foundPaths});
+        });
        // mongoose.connection.close(); // It's good practice  to close the database when you're done 
     }
   });

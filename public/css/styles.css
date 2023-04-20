@@ -610,7 +610,6 @@ textarea.error, input.error{
   content: url("/assets/icon-bookmark-empty.svg");
   position: absolute;
   top: 8px;
-
 }
 
 .true::after{
@@ -684,6 +683,7 @@ textarea.error, input.error{
   
   .true::after{
     content: url("/assets/icon-bookmark-full.svg");
+    
     position: absolute;
     top: 19px;
     transform: scale(1.5);
