@@ -2,6 +2,7 @@ console.log("Script is working");
 
 //Search box
 let ejsData = document.querySelector(".ejsData").innerHTML;
+console.log("Here comes the EJS data");
 console.log(ejsData);
 
 let searchInput = document.querySelector(".searchInput");
