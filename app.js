@@ -211,7 +211,8 @@ app.post("/register", function(req, res){
             userName: req.body.username
           });
           newUserPath.save();
-          // console.log(jsonFile[i].title);
+          console.log("Registration successful");
+          console.log(jsonFile[i].title);
         }
 
         User.find({"secret": {$ne: null}}, function(err, foundUsers){
@@ -264,6 +265,8 @@ app.post("/login", function(req, res){
                 } else{ // Or you could just show every thing by just console logging paths without the forEach
 
                   Path.find({userName: userNameLogin}, function (err, foundPaths) {;
+                    console.log("Log in successful");
+                    console.log(foundPaths);
                     res.render("index", {json: foundPaths});
                   });
                    // mongoose.connection.close(); // It's good practice  to close the database when you're done 

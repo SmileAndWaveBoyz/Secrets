@@ -689,3 +689,10 @@ textarea.error, input.error{
     transform: scale(1.5);
   }
 }
+
+.testMessage{
+  display: block;
+  margin: 0;
+  transform: translate(0px, -50px);
+  text-align: center;
+}
