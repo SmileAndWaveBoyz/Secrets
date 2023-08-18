@@ -2,7 +2,7 @@ console.log("Script is working");
 
 //Search box
 let ejsData = document.querySelector(".ejsData").innerHTML;
-// console.log(ejsData);
+console.log(ejsData);
 
 let searchInput = document.querySelector(".searchInput");
 let thumb = document.querySelector(".thumb");
@@ -71,7 +71,6 @@ function searchFunction(listToSort) {
 
 
 //Category icons
-console.log("ejsData" + ejsData.length);
 for (let i = 0; i < ejsData.length; i++) {
   
   const category = document.querySelectorAll(".category");
