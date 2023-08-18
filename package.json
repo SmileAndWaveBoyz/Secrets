@@ -10,7 +10,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "mongoose": "^5.4.5",
+    "mongoose": "^5.13.20",
     "mongoose-findorcreate": "^3.0.0",
     "ngrok": "^4.3.3",
     "passport": "^0.4.0",

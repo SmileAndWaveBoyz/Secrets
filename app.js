@@ -36,8 +36,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Setting up the users data base inside userDB
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
-// mongoose.connect("mongodb+srv://SmileAndWaveBoyz:Newcross971@cluster0.o6lompz.mongodb.net/userDB", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://SmileAndWaveBoyz:Newcross971@cluster0.o6lompz.mongodb.net/userDB", {useNewUrlParser: true});
 
 mongoose.set("useCreateIndex", true);
 
